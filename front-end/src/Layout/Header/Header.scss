@@ -1,0 +1,45 @@
+@media only screen and (max-width: 426px) {
+  .H-menu {
+    width: 100%;
+    box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px,
+      rgba(0, 0, 0, 0.3) 0px 30px 52px -30px;
+    border-radius: 10px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+    .HM-icon {
+      display: block !important;
+    }
+    .H-list-show {
+      display: none;
+      li {
+        display: block !important;
+      }
+    }
+  }
+}
+
+@media only screen and (min-width: 426px) {
+  .H-menu {
+    .H-list-show {
+      display: block !important;
+    }
+  }
+}
+
+.Header {
+  display: flex;
+  .HM-icon {
+    display: none;
+  }
+  ul {
+    list-style: none;
+    li {
+      display: inline;
+      margin: 0 0.5rem;
+      a {
+        color: black;
+        text-decoration: none;
+      }
+    }
+  }
+}
