@@ -2,7 +2,7 @@ import "./Input.scss";
 const Input = ({ label, type = "text", value = "" }) => {
   return (
     <div className="Input">
-      <label for={label}>{label}</label>
+      <label htmlFor={label}>{label}</label>
       <input id={label} type={type} value={value} />
     </div>
   );

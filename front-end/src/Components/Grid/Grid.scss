@@ -1,0 +1,27 @@
+.Grid {
+  display: flex;
+  justify-content: center;
+  overflow-x: auto;
+}
+
+.Grid table {
+  border-collapse: collapse;
+  min-width: 600px;
+  width: 100%;
+}
+
+.Grid th,
+.Grid td {
+  border: 1px solid #ddd;
+  padding: 8px;
+  text-align: center;
+  word-wrap: break-word; /* اضافه کردن این خط */
+  overflow: hidden; /* اضافه کردن این خط */
+}
+
+.Grid th {
+  padding-top: 12px;
+  padding-bottom: 12px;
+  background-color: #4caf50;
+  color: white;
+}
