@@ -17,27 +17,29 @@ const Header = () => {
   };
 
   return (
-    <div className="Header">
+    <div className="Header sticky top-0 bg-slate-50	rounded-b-lg shadow-md p-4">
       <div className="H-menu">
         <div className="HM-icon" onClick={handleShowMenu}>
           <IoMdMenu />
         </div>
-        <ul className="H-list H-list-show">
-          <li className="HL-item">
-            <Link to={"/"}>
-              <IoHomeOutline />
-            </Link>
-          </li>
-          <li className="HL-item">
-            <Link to={"/Register"}>ثبت نام</Link>
-          </li>
-          <li className="HL-item">
-            <Link to={"/Users"}>لیست افراد</Link>
-          </li>
-          <li className="HL-item">
-            <Link to={"/Report"}>گزارش</Link>
-          </li>
-        </ul>
+        <div className="H-list H-list-show">
+          <ul className="flex items-center">
+            <li className="HL-item">
+              <Link to={"/"}>
+                <IoHomeOutline />
+              </Link>
+            </li>
+            <li className="HL-item">
+              <Link to={"/Register"}>ثبت نام</Link>
+            </li>
+            <li className="HL-item">
+              <Link to={"/Users"}>لیست افراد</Link>
+            </li>
+            <li className="HL-item">
+              <Link to={"/Report"}>گزارش</Link>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   );

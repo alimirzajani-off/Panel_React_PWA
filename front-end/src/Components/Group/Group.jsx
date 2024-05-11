@@ -9,7 +9,7 @@ const Group = ({ title, children, className, onClick, ...props }) => {
     }
   };
   return (
-    <div className={`Group shadow-md mx-4 mt-2`}>
+    <div className={`Group bg-white rounded-t-lg shadow-md mx-4 mt-2`}>
       <div
         className="G-title rounded-t-lg py-2 px-4"
         onClick={handleTitleClick}

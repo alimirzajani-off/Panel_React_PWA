@@ -1,13 +1,15 @@
 .Grid {
   display: flex;
   justify-content: center;
-  overflow-x: auto;
+  overflow-x: auto; /* اضافه کردن این خط */
 }
 
 .Grid table {
   border-collapse: collapse;
   min-width: 600px;
   width: 100%;
+  font-family: Arial, sans-serif;
+  box-sizing: border-box; /* اضافه کردن این خط */
 }
 
 .Grid th,
@@ -17,6 +19,7 @@
   text-align: center;
   word-wrap: break-word; /* اضافه کردن این خط */
   overflow: hidden; /* اضافه کردن این خط */
+  box-sizing: border-box; /* اضافه کردن این خط */
 }
 
 .Grid th {

@@ -1,5 +1,11 @@
 .Group {
   .G-title {
-    background-color: rgb(238, 175, 29);
+    background: rgb(225, 172, 45);
+    background: linear-gradient(
+      90deg,
+      rgba(225, 172, 45, 0.7876400560224089) 16%,
+      rgba(230, 168, 50, 0.8324579831932774) 21%,
+      rgba(255, 183, 0, 0.9585084033613446) 100%
+    );
   }
 }

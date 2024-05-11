@@ -1,6 +1,9 @@
 .Input {
   width: min-content;
   margin: 0.75rem;
+  input {
+    padding: 1.25rem 0.75rem;
+  }
   input,
   input[type="date"] {
     margin: 0.5rem 0;
@@ -12,6 +15,6 @@
   }
   input[type="date" i] {
     height: 1.9rem;
-    width: 9rem;
+    width: 10.5rem;
   }
 }
