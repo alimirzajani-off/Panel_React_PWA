@@ -1,7 +1,14 @@
 import "./TextArea.scss";
-const TextArea = ({ label, type = "text", value = "", onChange, name }) => {
+const TextArea = ({
+  label,
+  type = "text",
+  value = "",
+  onChange,
+  className,
+  name,
+}) => {
   return (
-    <div className="TextArea">
+    <div className={`TextArea ${className}`}>
       <label htmlFor={label}>{label}</label>
       <textarea id={label} value={value} onChange={onChange} name={name} />
     </div>

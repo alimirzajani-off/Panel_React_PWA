@@ -98,7 +98,6 @@ const Register = () => {
   });
 
   const HandleChangeValue = (e) => {
-    console.log(e);
     if (e.target.type == "checkbox") {
       setValueState((prev) => {
         return {
@@ -208,29 +207,35 @@ const Register = () => {
         <Group title={<h3>اطلاعات اعضا خانواده</h3>} className={"RI-user"}>
           <Grid columns={columns} data={ValueState.FamilyInfo} />
         </Group>
-        <Group title={<h3>اطلاعات بیشتر</h3>}>
-          <RadioGroup
-            name={"ReliefCommittee"}
-            items={RadioItems}
-            title={"1. آیا خانوار تحت پوشش کمیته امداد می باشد؟"}
-            value={ValueState.ReliefCommittee}
-            onChange={HandleChangeValue}
-          />
-          <RadioGroup
-            name={"PublicAssistance"}
-            items={RadioItems}
-            title={"2. آیا کمک های مردمی به این خانوار می رسد؟"}
-            value={ValueState.PublicAssistance}
-            onChange={HandleChangeValue}
-          />
-          <RadioGroup
-            name={"SelfSufficiency"}
-            items={RadioItems}
-            title={"3. آیا تمایل به شرکت در طرح خود کفایی دارند؟"}
-            value={ValueState.SelfSufficiency}
-            onChange={HandleChangeValue}
-          />
+        <Group title={<h3>اطلاعات بیشتر</h3>} className={"RI-user RI-others"}>
+          <div className="RI-othersRadio flex flex-wrap">
+            <RadioGroup
+              className="RIO-item"
+              name={"ReliefCommittee"}
+              items={RadioItems}
+              title={"1. آیا خانوار تحت پوشش کمیته امداد می باشد؟"}
+              value={ValueState.ReliefCommittee}
+              onChange={HandleChangeValue}
+            />
+            <RadioGroup
+              className="RIO-item"
+              name={"PublicAssistance"}
+              items={RadioItems}
+              title={"2. آیا کمک های مردمی به این خانوار می رسد؟"}
+              value={ValueState.PublicAssistance}
+              onChange={HandleChangeValue}
+            />
+            <RadioGroup
+              className="RIO-item"
+              name={"SelfSufficiency"}
+              items={RadioItems}
+              title={"3. آیا تمایل به شرکت در طرح خود کفایی دارند؟"}
+              value={ValueState.SelfSufficiency}
+              onChange={HandleChangeValue}
+            />
+          </div>
           <Checkbox
+            className="RIO-item items-center"
             name={"HomeStatus"}
             items={[
               { value: "rental", label: "استیجاری" },
@@ -241,28 +246,38 @@ const Register = () => {
             value={ValueState.HomeStatus}
             onChange={HandleChangeValue}
           />
-          <Input
-            name={"MonthlyIncome"}
-            type="number"
-            label={"5. میانگین درآمد ماهیانه"}
-            value={ValueState.MonthlyIncome}
-            onChange={HandleChangeValue}
-          />
-          <RadioGroup
-            name={"CarStatus"}
-            items={RadioItems}
-            title={"6. آیا وسیله نقلیه دارید؟"}
-            value={ValueState.CarStatus}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"CarType"}
-            type="text"
-            label={"نوع وسیله نقلیه"}
-            value={ValueState.CarType}
-            onChange={HandleChangeValue}
-          />
+          <div className="flex flex-wrap">
+            <Input
+              className="RIO-item"
+              name={"MonthlyIncome"}
+              type="number"
+              label={"5. میانگین درآمد ماهیانه"}
+              value={ValueState.MonthlyIncome}
+              onChange={HandleChangeValue}
+            />
+          </div>
+          <div className="flex flex-wrap">
+            <RadioGroup
+              className="RIO-item"
+              name={"CarStatus"}
+              items={RadioItems}
+              title={"6. آیا وسیله نقلیه دارید؟"}
+              value={ValueState.CarStatus}
+              onChange={HandleChangeValue}
+            />
+            {ValueState.CarStatus == "true" && (
+              <Input
+                className="RIO-item"
+                name={"CarType"}
+                type="text"
+                label={"نوع وسیله نقلیه"}
+                value={ValueState.CarType}
+                onChange={HandleChangeValue}
+              />
+            )}
+          </div>
           <TextArea
+            className="RIO-item"
             name={"Others"}
             label={"7. نیاز ها و مشکلات اساسی خانوار به شرح ذیل می باشد:"}
             value={ValueState.Others}

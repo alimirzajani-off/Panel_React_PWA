@@ -1,7 +1,14 @@
 import "./Input.scss";
-const Input = ({ label, type = "text", value = "", name, onChange }) => {
+const Input = ({
+  label,
+  type = "text",
+  value = "",
+  name,
+  onChange,
+  className,
+}) => {
   return (
-    <div className="Input">
+    <div className={`Input ${className}`}>
       <label htmlFor={name}>{label}</label>
       <input
         id={name}
