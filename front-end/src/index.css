@@ -28,7 +28,7 @@
 
 body {
   direction: rtl;
-  font-family: KalamehWebBold !important;
+  font-family: KalamehWebRegular !important;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   overflow-x: hidden;

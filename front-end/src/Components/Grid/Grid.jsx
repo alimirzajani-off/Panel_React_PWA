@@ -1,5 +1,5 @@
 import "./Grid.scss";
-const Grid = ({ columns, data }) => {
+const Grid = ({ columns, data, className }) => {
   const TableHeader = () => {
     return columns?.map((item, index) => (
       <th key={index} className="G-header" style={{ width: `${item.width}` }}>
@@ -21,7 +21,7 @@ const Grid = ({ columns, data }) => {
   };
 
   return (
-    <div className="Grid">
+    <div className={`Grid ${className}`}>
       <table>
         <thead>
           <tr>

@@ -6,6 +6,8 @@ import Input from "../../Components/Inputs/Input/Input";
 import TextArea from "../../Components/Inputs/TextArea/TextArea";
 import RadioGroup from "../../Components/RadioGroup/RadioGroup";
 import "./Register.scss";
+import Modal from "../../Components/Modal/Modal";
+import Button from "../../Components/Button/Button";
 
 const columns = [
   { field: "FirstName", title: "نام", width: "500px" },
@@ -27,6 +29,8 @@ const RadioItems = [
 ];
 
 const Register = () => {
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [modal, setmodal] = useState("");
   const [ValueState, setValueState] = useState({
     FullName: "",
     FatherName: "",
@@ -115,10 +119,98 @@ const Register = () => {
     }
   };
 
+  const handleOpenModal = (e) => {
+    e.preventDefault();
+    setmodal(
+      <div className="">
+        <Group
+          title={<h3>اطلاعات عضو خانواده</h3>}
+          className="flex flex-wrap justify-center	"
+        >
+          <Input
+            name={"FullName"}
+            label={"نام و نام خانوادگی"}
+            value={ValueState.FullName}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"FatherName"}
+            label={"نام پدر"}
+            value={ValueState.FatherName}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"PersonalNumber"}
+            type="number"
+            label={"شماره ملی"}
+            value={ValueState.PersonalNumber}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"BirthDate"}
+            type="date"
+            label={"تاریخ تولد"}
+            value={ValueState.BirthDate}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"Education"}
+            label={"نسبت"}
+            value={ValueState.Education}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"Education"}
+            label={"وضعیت تاهل"}
+            value={ValueState.Education}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"Education"}
+            label={"تحصیلات"}
+            value={ValueState.Education}
+            onChange={HandleChangeValue}
+          />
+          <Input
+            name={"Job"}
+            label={"شغل"}
+            value={ValueState.Job}
+            onChange={HandleChangeValue}
+          />
+        </Group>
+        <div className="flex flex-wrap justify-center m-4">
+          <Button
+            className={"bg-lime-600 text-white m-2 w-24"}
+            onClick={(e) => {
+              e.preventDefault();
+              console.log("save");
+              setIsModalOpen(false);
+            }}
+          >
+            ذخیره
+          </Button>
+          <Button
+            className={"bg-red-600 text-white m-2 w-24"}
+            onClick={(e) => {
+              e.preventDefault();
+              setIsModalOpen(false);
+            }}
+          >
+            بستن
+          </Button>
+        </div>
+      </div>
+    );
+    setIsModalOpen(true);
+  };
+
   return (
     <form className="Register">
       <div className="R-information">
-        <Group title={<h3>اطلاعات سرپرست</h3>} className={"RI-user"}>
+        <Group
+          title={<h3>اطلاعات سرپرست</h3>}
+          className={"RI-user justify-center"}
+        >
           <Input
             name={"FullName"}
             label={"نام و نام خانوادگی"}
@@ -205,7 +297,19 @@ const Register = () => {
           />
         </Group>
         <Group title={<h3>اطلاعات اعضا خانواده</h3>} className={"RI-user"}>
-          <Grid columns={columns} data={ValueState.FamilyInfo} />
+          <Button
+            onClick={handleOpenModal}
+            className={
+              "my-2 px-4 bg-lime-600 text-white hover:bg-lime-50 hover:text-black hover:border hover:border-green-50	hover:border-solid	"
+            }
+          >
+            افزودن
+          </Button>
+          <Grid
+            columns={columns}
+            data={ValueState.FamilyInfo}
+            className={"rounded-lg"}
+          />
         </Group>
         <Group title={<h3>اطلاعات بیشتر</h3>} className={"RI-user RI-others"}>
           <div className="RI-othersRadio flex flex-wrap">
@@ -277,13 +381,38 @@ const Register = () => {
             )}
           </div>
           <TextArea
-            className="RIO-item"
+            className="RIO-item flex flex-col w-full !h-full"
             name={"Others"}
             label={"7. نیاز ها و مشکلات اساسی خانوار به شرح ذیل می باشد:"}
             value={ValueState.Others}
             onChange={HandleChangeValue}
           />
         </Group>
+      </div>
+      {isModalOpen && (
+        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+          {modal}
+        </Modal>
+      )}
+      <div className="flex flex-wrap justify-center m-4">
+        <Button
+          className={"bg-lime-600 text-white m-2 w-24"}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("save");
+          }}
+        >
+          ذخیره
+        </Button>
+        <Button
+          className={"bg-red-600 text-white m-2 w-24"}
+          onClick={(e) => {
+            e.preventDefault();
+            console.log("close");
+          }}
+        >
+          بستن
+        </Button>
       </div>
     </form>
   );
