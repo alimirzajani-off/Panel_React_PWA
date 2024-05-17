@@ -1,7 +1,10 @@
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import Layout from "./Layout/Layout";
 import Home from "./Pages/Home/Home";
-import Register from "./Pages/Register/Register";
+import RegisterNeedy from "./Pages/Register/RegisterNeedy/RegisterNeedy";
+import RegisterContributor from "./Pages/Register/RegisterContributor/RegisterContributor";
+import Needy from "./Pages/Needy/Needy";
+import Contributor from "./Pages/Contributor/Contributor";
 
 function App() {
   return (
@@ -9,8 +12,13 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<Home />} />
-          <Route path="Register" element={<Register />} />
-          <Route path="Users" element={<>Users</>} />
+          <Route path="Register-Needy" element={<RegisterNeedy />} />
+          <Route
+            path="Register-Contributor"
+            element={<RegisterContributor />}
+          />
+          <Route path="Needy" element={<Needy />} />
+          <Route path="Contributor" element={<Contributor />} />
           <Route path="Report" element={<>Report</>} />
         </Route>
       </Routes>

@@ -1,0 +1,22 @@
+.Register {
+  .R-information {
+    .RIO-item {
+      height: 5rem;
+      margin: 1rem 0;
+      padding: 0.5rem;
+    }
+    .RI-user {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      .Radio {
+        align-items: center;
+      }
+    }
+    .RI-others {
+      .Input {
+        margin: 0 !important;
+      }
+    }
+  }
+}

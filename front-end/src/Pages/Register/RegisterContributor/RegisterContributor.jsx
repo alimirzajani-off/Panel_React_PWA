@@ -1,13 +1,10 @@
 import { useState } from "react";
-import Checkbox from "../../Components/CheckBox/CheckBox";
-import Grid from "../../Components/Grid/Grid";
-import Group from "../../Components/Group/Group";
-import Input from "../../Components/Inputs/Input/Input";
-import TextArea from "../../Components/Inputs/TextArea/TextArea";
-import RadioGroup from "../../Components/RadioGroup/RadioGroup";
-import "./Register.scss";
-import Modal from "../../Components/Modal/Modal";
-import Button from "../../Components/Button/Button";
+import Group from "../../../Components/Group/Group";
+import Input from "../../../Components/Inputs/Input/Input";
+import TextArea from "../../../Components/Inputs/TextArea/TextArea";
+import Modal from "../../../Components/Modal/Modal";
+import Button from "../../../Components/Button/Button";
+import "./RegisterContributor.scss";
 
 const columns = [
   { field: "FirstName", title: "نام", width: "500px" },
@@ -23,12 +20,7 @@ const columns = [
 
 const data = [];
 
-const RadioItems = [
-  { value: "true", label: "بله" },
-  { value: "false", label: "خیر" },
-];
-
-const Register = () => {
+const RegisterContributor = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modal, setmodal] = useState("");
   const [ValueState, setValueState] = useState({
@@ -208,7 +200,7 @@ const Register = () => {
     <form className="Register">
       <div className="R-information">
         <Group
-          title={<h3>اطلاعات سرپرست</h3>}
+          title={<h3>اطلاعات خیّر</h3>}
           className={"RI-user justify-center"}
         >
           <Input
@@ -296,90 +288,7 @@ const Register = () => {
             onChange={HandleChangeValue}
           />
         </Group>
-        <Group title={<h3>اطلاعات اعضا خانواده</h3>} className={"RI-user"}>
-          <Button
-            onClick={handleOpenModal}
-            className={
-              "my-2 px-4 bg-lime-600 text-white hover:bg-lime-50 hover:text-black hover:border hover:border-green-50	hover:border-solid	"
-            }
-          >
-            افزودن
-          </Button>
-          <Grid
-            columns={columns}
-            data={ValueState.FamilyInfo}
-            className={"rounded-lg"}
-          />
-        </Group>
         <Group title={<h3>اطلاعات بیشتر</h3>} className={"RI-user RI-others"}>
-          <div className="RI-othersRadio flex flex-wrap">
-            <RadioGroup
-              className="RIO-item"
-              name={"ReliefCommittee"}
-              items={RadioItems}
-              title={"1. آیا خانوار تحت پوشش کمیته امداد می باشد؟"}
-              value={ValueState.ReliefCommittee}
-              onChange={HandleChangeValue}
-            />
-            <RadioGroup
-              className="RIO-item"
-              name={"PublicAssistance"}
-              items={RadioItems}
-              title={"2. آیا کمک های مردمی به این خانوار می رسد؟"}
-              value={ValueState.PublicAssistance}
-              onChange={HandleChangeValue}
-            />
-            <RadioGroup
-              className="RIO-item"
-              name={"SelfSufficiency"}
-              items={RadioItems}
-              title={"3. آیا تمایل به شرکت در طرح خود کفایی دارند؟"}
-              value={ValueState.SelfSufficiency}
-              onChange={HandleChangeValue}
-            />
-          </div>
-          <Checkbox
-            className="RIO-item items-center"
-            name={"HomeStatus"}
-            items={[
-              { value: "rental", label: "استیجاری" },
-              { value: "personal", label: "شخصی" },
-              { value: "others", label: "منزل پدری" },
-            ]}
-            title={"4. وضعیت مسکن"}
-            value={ValueState.HomeStatus}
-            onChange={HandleChangeValue}
-          />
-          <div className="flex flex-wrap">
-            <Input
-              className="RIO-item"
-              name={"MonthlyIncome"}
-              type="number"
-              label={"5. میانگین درآمد ماهیانه"}
-              value={ValueState.MonthlyIncome}
-              onChange={HandleChangeValue}
-            />
-          </div>
-          <div className="flex flex-wrap">
-            <RadioGroup
-              className="RIO-item"
-              name={"CarStatus"}
-              items={RadioItems}
-              title={"6. آیا وسیله نقلیه دارید؟"}
-              value={ValueState.CarStatus}
-              onChange={HandleChangeValue}
-            />
-            {ValueState.CarStatus == "true" && (
-              <Input
-                className="RIO-item"
-                name={"CarType"}
-                type="text"
-                label={"نوع وسیله نقلیه"}
-                value={ValueState.CarType}
-                onChange={HandleChangeValue}
-              />
-            )}
-          </div>
           <TextArea
             className="RIO-item flex flex-col w-full !h-full"
             name={"Others"}
@@ -418,4 +327,4 @@ const Register = () => {
   );
 };
 
-export default Register;
+export default RegisterContributor;

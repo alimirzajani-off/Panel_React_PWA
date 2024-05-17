@@ -43,5 +43,10 @@
         text-decoration: none;
       }
     }
+    .Register:hover {
+      .Register-dropdown {
+        display: block;
+      }
+    }
   }
 }
