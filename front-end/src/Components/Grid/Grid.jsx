@@ -19,6 +19,7 @@ const Grid = ({ columns, data, className }) => {
       </tr>
     ));
   };
+console.log(data,columns);
 
   return (
     <div className={`Grid ${className}`}>

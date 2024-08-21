@@ -1,4 +1,5 @@
 import { useState } from "react";
+import axios from "axios";
 import Checkbox from "../../../Components/CheckBox/CheckBox";
 import Grid from "../../../Components/Grid/Grid";
 import Group from "../../../Components/Group/Group";
@@ -50,39 +51,6 @@ const RegisterNeedy = () => {
         FirstName: "sdaf",
         LastName: "bre",
         ParentName: "aesed",
-        PersonalNumber: 0,
-        BirthDate: 1379,
-        Proportion: "children",
-        MaritalStatus: "mojarad",
-        Job: "student",
-        Education: "لیسلنس",
-      },
-      {
-        FirstName: "qedsa",
-        LastName: "hyrh",
-        ParentName: "hytrw",
-        PersonalNumber: 0,
-        BirthDate: 1379,
-        Proportion: "children",
-        MaritalStatus: "mojarad",
-        Job: "student",
-        Education: "لیسلنس",
-      },
-      {
-        FirstName: "",
-        LastName: "",
-        ParentName: "",
-        PersonalNumber: 0,
-        BirthDate: 1379,
-        Proportion: "children",
-        MaritalStatus: "mojarad",
-        Job: "student",
-        Education: "لیسلنس",
-      },
-      {
-        FirstName: "",
-        LastName: "",
-        ParentName: "",
         PersonalNumber: 0,
         BirthDate: 1379,
         Proportion: "children",
@@ -399,7 +367,12 @@ const RegisterNeedy = () => {
           className={"bg-lime-600 text-white m-2 w-24"}
           onClick={(e) => {
             e.preventDefault();
-            console.log("save");
+            axios
+              .post("http://localhost:5000/user/addUser", ValueState)
+              .then((res) => {
+                console.log(res);
+              })
+              .catch((rej) => toast.error(rej.response.data.message));
           }}
         >
           ذخیره
