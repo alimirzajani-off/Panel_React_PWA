@@ -31,20 +31,22 @@ export const Login = () => {
 
   return (
     <form onSubmit={handleLogin} className="Login flex items-center  h-[100vh]">
-      <div className="login__input-box  bg-white rounded-md w-[90%] flex flex-col items-center relative m-auto p-4">
+      <div className="login__input-box  bg-white rounded-md w-[70%] max-w-[20rem] flex flex-col items-center relative m-auto p-4">
         <Input
           name={"username"}
-          label={"نام کاربری"}
+          inputClassName={"w-full"}
+          placeholder={"نام کاربری"}
           value={ValueState.username}
           onChange={HandleChangeValue}
         />
         <Input
           name={"password"}
-          label={"رمز عبور"}
+          inputClassName={"w-full"}
+          placeholder={"رمز عبور"}
           value={ValueState.password}
           onChange={HandleChangeValue}
         />
-        <Button className={"px-4 bg-[#22c55e]"} onClick={handleLogin}>
+        <Button className={"px-4 bg-[#22c55e] w-full"} onClick={handleLogin}>
           ورود
         </Button>
       </div>

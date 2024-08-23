@@ -9,11 +9,12 @@ import RadioGroup from "../../../Components/RadioGroup/RadioGroup";
 import "./RegisterNeedy.scss";
 import Modal from "../../../Components/Modal/Modal";
 import Button from "../../../Components/Button/Button";
+import { FamilyRegister } from "./FamilyRegister/FamilyRegister";
 
 const columns = [
   { field: "FirstName", title: "نام", width: "500px" },
   { field: "LastName", title: "نام خانوادگی", width: "150px" },
-  { field: "FathertName", title: "نام پدر", width: "300px" },
+  { field: "ParentName", title: "نام پدر", width: "300px" },
   { field: "PersonalNumber", title: "شماره ملی", width: "150px" },
   { field: "BirthDate", title: "تاریخ تولد", width: "500px" },
   { field: "Proportion", title: "نسبت", width: "400px" },
@@ -34,7 +35,7 @@ const RegisterNeedy = () => {
   const [modal, setmodal] = useState("");
   const [ValueState, setValueState] = useState({
     FullName: "",
-    FatherName: "",
+    ParentName: "",
     PersonalNumber: null,
     BirthDate: null,
     Education: "",
@@ -46,19 +47,7 @@ const RegisterNeedy = () => {
     PostalCode: null,
     HomeAddress: "",
     OfficeAddress: "",
-    FamilyInfo: [
-      {
-        FirstName: "sdaf",
-        LastName: "bre",
-        ParentName: "aesed",
-        PersonalNumber: 0,
-        BirthDate: 1379,
-        Proportion: "children",
-        MaritalStatus: "mojarad",
-        Job: "student",
-        Education: "لیسلنس",
-      },
-    ],
+    FamilyInfo: [],
     ReliefCommittee: "true",
     PublicAssistance: "true",
     SelfSufficiency: "false",
@@ -89,87 +78,20 @@ const RegisterNeedy = () => {
 
   const handleOpenModal = (e) => {
     e.preventDefault();
-    setmodal(
-      <div className="">
-        <Group
-          title={<h3>اطلاعات عضو خانواده</h3>}
-          className="flex flex-wrap justify-center	"
-        >
-          <Input
-            name={"FullName"}
-            label={"نام و نام خانوادگی"}
-            value={ValueState.FullName}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"FatherName"}
-            label={"نام پدر"}
-            value={ValueState.FatherName}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"PersonalNumber"}
-            type="number"
-            label={"شماره ملی"}
-            value={ValueState.PersonalNumber}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"BirthDate"}
-            type="date"
-            label={"تاریخ تولد"}
-            value={ValueState.BirthDate}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"Education"}
-            label={"نسبت"}
-            value={ValueState.Education}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"Education"}
-            label={"وضعیت تاهل"}
-            value={ValueState.Education}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"Education"}
-            label={"تحصیلات"}
-            value={ValueState.Education}
-            onChange={HandleChangeValue}
-          />
-          <Input
-            name={"Job"}
-            label={"شغل"}
-            value={ValueState.Job}
-            onChange={HandleChangeValue}
-          />
-        </Group>
-        <div className="flex flex-wrap justify-center m-4">
-          <Button
-            className={"bg-lime-600 text-white m-2 w-24"}
-            onClick={(e) => {
-              e.preventDefault();
-              console.log("save");
-              setIsModalOpen(false);
-            }}
-          >
-            ذخیره
-          </Button>
-          <Button
-            className={"bg-red-600 text-white m-2 w-24"}
-            onClick={(e) => {
-              e.preventDefault();
-              setIsModalOpen(false);
-            }}
-          >
-            بستن
-          </Button>
-        </div>
-      </div>
-    );
+    setmodal(<FamilyRegister onClose={handleCloseModal} />);
     setIsModalOpen(true);
+  };
+
+  const handleCloseModal = (type, res) => {
+    if (type == "close") setIsModalOpen(false);
+    if (type == "save") {
+      let gridData = [...ValueState.FamilyInfo];
+      gridData.push(res);
+      setValueState((prev) => {
+        return { ...prev, FamilyInfo: gridData };
+      });
+      setIsModalOpen(false);
+    }
   };
 
   return (
@@ -181,18 +103,21 @@ const RegisterNeedy = () => {
         >
           <Input
             name={"FullName"}
+            style={{ width: "min-content" }}
             label={"نام و نام خانوادگی"}
             value={ValueState.FullName}
             onChange={HandleChangeValue}
           />
           <Input
-            name={"FatherName"}
+            name={"ParentName"}
+            style={{ width: "min-content" }}
             label={"نام پدر"}
-            value={ValueState.FatherName}
+            value={ValueState.ParentName}
             onChange={HandleChangeValue}
           />
           <Input
             name={"PersonalNumber"}
+            style={{ width: "min-content" }}
             type="number"
             label={"شماره ملی"}
             value={ValueState.PersonalNumber}
@@ -200,6 +125,7 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"BirthDate"}
+            style={{ width: "min-content" }}
             type="date"
             label={"تاریخ تولد"}
             value={ValueState.BirthDate}
@@ -207,24 +133,28 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"Education"}
+            style={{ width: "min-content" }}
             label={"تحصیلات"}
             value={ValueState.Education}
             onChange={HandleChangeValue}
           />
           <Input
             name={"Job"}
+            style={{ width: "min-content" }}
             label={"شغل"}
             value={ValueState.Job}
             onChange={HandleChangeValue}
           />
           <Input
             name={"Nationality"}
+            style={{ width: "min-content" }}
             label={"ملیت"}
             value={ValueState.Nationality}
             onChange={HandleChangeValue}
           />
           <Input
             name={"TellPhone"}
+            style={{ width: "min-content" }}
             type="number"
             label={"تلفن ثابت"}
             value={ValueState.TellPhone}
@@ -232,6 +162,7 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"CellPhone"}
+            style={{ width: "min-content" }}
             type="number"
             label={"تلفن همراه"}
             value={ValueState.CellPhone}
@@ -239,6 +170,7 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"BankAccount"}
+            style={{ width: "min-content" }}
             type="number"
             label={"شماره حساب بانکی"}
             value={ValueState.BankAccount}
@@ -246,6 +178,7 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"PostalCode"}
+            style={{ width: "min-content" }}
             type="number"
             label={"کد پستی"}
             value={ValueState.PostalCode}
@@ -253,12 +186,14 @@ const RegisterNeedy = () => {
           />
           <Input
             name={"HomeAddress"}
+            style={{ width: "min-content" }}
             label={"آدرس"}
             value={ValueState.HomeAddress}
             onChange={HandleChangeValue}
           />
           <Input
             name={"OfficeAddress"}
+            style={{ width: "min-content" }}
             label={"آدرس محل کار"}
             value={ValueState.OfficeAddress}
             onChange={HandleChangeValue}
@@ -322,6 +257,7 @@ const RegisterNeedy = () => {
             <Input
               className="RIO-item"
               name={"MonthlyIncome"}
+              style={{ width: "min-content" }}
               type="number"
               label={"5. میانگین درآمد ماهیانه"}
               value={ValueState.MonthlyIncome}
@@ -340,6 +276,7 @@ const RegisterNeedy = () => {
             {ValueState.CarStatus == "true" && (
               <Input
                 className="RIO-item"
+                style={{ width: "min-content" }}
                 name={"CarType"}
                 type="text"
                 label={"نوع وسیله نقلیه"}
@@ -358,7 +295,7 @@ const RegisterNeedy = () => {
         </Group>
       </div>
       {isModalOpen && (
-        <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
+        <Modal isOpen={isModalOpen} onClose={handleCloseModal}>
           {modal}
         </Modal>
       )}

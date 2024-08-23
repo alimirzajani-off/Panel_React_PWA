@@ -22,6 +22,19 @@ const User = new mongoose.Schema({
   CarStatus: Boolean,
   CarType: Boolean,
   Others: String,
+  FamilyInfo: [
+    {
+      FirstName: String,
+      LastName: String,
+      ParentName: String,
+      PersonalNumber: Number,
+      BirthDate: String,
+      Proportion: String,
+      MaritalStatus: Boolean,
+      Job: String,
+      Education: String,
+    },
+  ],
 });
 
 export default mongoose.model("User", User);
